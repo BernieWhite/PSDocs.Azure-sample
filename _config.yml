@@ -19,9 +19,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here.
 baseurl: "/PSDocs.Azure-sample" # the subpath of your site, e.g. /blog
 url: "https://berniewhite.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-# twitter_username: jekyllrb
-github_username: jekyll
-
+repo: "https://github.com/BernieWhite/PSDocs.Azure-sample"
 
 permalink: pretty
 
@@ -38,7 +36,7 @@ exclude:
 theme: just-the-docs
 color_scheme: nil
 plugins:
-  # - jekyll-feed
+- jekyll-feed
 - jekyll-spaceship
 
 compress_html:
