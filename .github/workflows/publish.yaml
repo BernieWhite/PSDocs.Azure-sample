@@ -27,7 +27,7 @@ jobs:
               $templateName = $template.Directory.Parent.Name;
               $version = $template.Directory.Name;
               $docName = "$($templateName)_$version";
-              Invoke-PSDocument -Module PSDocs.Azure -OutputPath out/docs/ -InputObject $template.FullName -InstanceName $docName;
+              Invoke-PSDocument -Module PSDocs.Azure -OutputPath docs/templates/ -InputObject $template.FullName -InstanceName $docName;
           }
 
       - name: 💎 setup ruby
@@ -42,13 +42,13 @@ jobs:
       - name: Build site
         run: |
           bundle exec jekyll build
-        # --config _configpages.yml --destination ./distn/options/#build-command-options
+        #  --config _configpages.yml --destination ./distn/options/#build-command-options
 
-      # - name: 🚀 deploy
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: ./_site
-      #     # if the repo you are deploying to is <username>.github.io, uncomment the line below.
-      #     # if you are including the line below, make sure your source files are NOT in the master branch:
-      #     # publish_branch: master
+      - name: 🚀 deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          # if the repo you are deploying to is <username>.github.io, uncomment the line below.
+          # if you are including the line below, make sure your source files are NOT in the master branch:
+          # publish_branch: master
