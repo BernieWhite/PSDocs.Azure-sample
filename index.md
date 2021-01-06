@@ -3,4 +3,10 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: home
+title: Home
+nav_order: 1
 ---
+
+Hi there!
+
+You have landed on a sample for automatically generating documentation for Azure template.
