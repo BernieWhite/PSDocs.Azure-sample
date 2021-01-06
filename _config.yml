@@ -17,10 +17,10 @@ title: PSDocs for Azure Sample
 email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/PSDocs.Azure-sample" # the subpath of your site, e.g. /blog
+url: "https://berniewhite.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
-github_username:  jekyll
+github_username: jekyll
 
 
 permalink: pretty
@@ -31,6 +31,7 @@ exclude:
 - Gemfile.lock
 - LICENSE
 - README.md
+- ps-docs.yaml
 
 # Build settings
 # markdown: kramdown
