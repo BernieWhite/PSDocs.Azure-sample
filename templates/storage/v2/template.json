@@ -9,7 +9,8 @@
         "storageAccountName": {
             "type": "string",
             "metadata": {
-                "description": "Required. The name of the Storage Account."
+                "description": "Required. The name of the Storage Account.",
+                "example": "<name>"
             }
         },
         "location": {
