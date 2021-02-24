@@ -46,4 +46,72 @@
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div></div></div></div><div class="search-overlay"></div></div>
+</span></code></pre></div></div><p>PSDocs interprets the template structure and metadata to generate documentation as markdown. Generating documentation as markdown allows you to publish web-based content on a variety of platforms.</p><p>PSDocs supports the following metadata:</p><div class="table-wrapper"><table><thead><tr><th>Field<th>Scope<th>Type<th>Description<tbody><tr><td><code class="language-plaintext highlighter-rouge">name</code><td>Template<td><code class="language-plaintext highlighter-rouge">string</code><td>Used for markdown page title.<tr><td><code class="language-plaintext highlighter-rouge">description</code><td>Template<td><code class="language-plaintext highlighter-rouge">string</code><td>Used as the top description for the markdown page.<tr><td><code class="language-plaintext highlighter-rouge">description</code><td>Parameter<td><code class="language-plaintext highlighter-rouge">string</code><td>Used as the description for the parameter.<tr><td><code class="language-plaintext highlighter-rouge">example</code><td>Parameter<td><code class="language-plaintext highlighter-rouge">string</code>, <code class="language-plaintext highlighter-rouge">boolean</code>, <code class="language-plaintext highlighter-rouge">object</code>, or <code class="language-plaintext highlighter-rouge">array</code><td>An example use of the parameter. The example is included in the JSON snippet. If an example is not included the default value is used instead.<tr><td><code class="language-plaintext highlighter-rouge">ignore</code><td>Parameter<td><code class="language-plaintext highlighter-rouge">boolean</code><td>When <code class="language-plaintext highlighter-rouge">true</code> the parameter is not included in the JSON snippet.<tr><td><code class="language-plaintext highlighter-rouge">description</code><td>Output<td><code class="language-plaintext highlighter-rouge">string</code><td>Used as the description for the output.</table></div><h3 id="using-with-github-actions"> <a href="#using-with-github-actions" class="anchor-heading" aria-labelledby="using-with-github-actions"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Using with GitHub Actions</h3><p>The following example shows how to setup GitHub Actions to copy generated markdown files to an Azure blob storage account.</p><ul><li>See [Creating a workflow file][create-workflow] to create an empty workflow file.<li>Add a PowerShell step to:<ul><li>Install [PSDocs.Azure][module] module.<li>Scan for Azure template file recursively in the templates/ directory.<li>Generate a standard name of the markdown file. i.e. <code class="language-plaintext highlighter-rouge">&lt;name&gt;_&lt;version&gt;</code>.md<li>Generate the markdown to a specific directory.</ul><li>Set the <code class="language-plaintext highlighter-rouge">STORAGEACCOUNTSECRET</code> action secret.<li>Use an <a href="https://github.com/marketplace/actions/azure-blob-storage-upload">Azure Blob Storage Upload action</a> to copy the generated markdown to an Azure Storage Blob container.</ul><p>For example:</p><div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Example: .github/workflows/arm-docs.yaml</span>
+
+<span class="na">name</span><span class="pi">:</span> <span class="s">Generate ARM templates docs</span>
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">main</span> <span class="pi">]</span>
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">arm_docs</span><span class="pi">:</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">Generate ARM template docs</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">steps</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Checkout</span>
+      <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+    <span class="c1"># STEP 1: Generate Markdowns using PSDocs</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Generate ARM markdowns</span>
+      <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span> 
+        <span class="s">Install-Module -Name 'PSDocs.Azure' -Repository PSGallery -force;</span>
+        <span class="s"># Scan for Azure template file recursively in the templates/ directory</span>
+        <span class="s">Get-AzDocTemplateFile -Path templates/ | ForEach-Object {</span>
+          <span class="s"># Generate a standard name of the markdown file. i.e. &lt;name&gt;_&lt;version&gt;.md</span>
+          <span class="s">$template = Get-Item -Path $_.TemplateFile;</span>
+          <span class="s">$templateName = $template.Directory.Parent.Name;</span>
+          <span class="s">$version = $template.Directory.Name;</span>
+          <span class="s">$docName = "$($templateName)_$version";</span>
+          <span class="s"># Generate markdown</span>
+          <span class="s">Invoke-PSDocument -Module PSDocs.Azure -OutputPath out/docs/ -InputObject $template.FullName -InstanceName $docName;</span>
+        <span class="s">}</span>
+      <span class="na">shell</span><span class="pi">:</span> <span class="s">pwsh</span>
+
+    <span class="c1"># STEP 2: Copy files to a storage account</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Copy files to a storage account</span>
+      <span class="na">uses</span><span class="pi">:</span> <span class="s">bacongobbler/azure-blob-storage-upload@v1.1.1</span>
+      <span class="na">with</span><span class="pi">:</span>
+        <span class="na">connection_string</span><span class="pi">:</span> <span class="s">$</span>
+        <span class="na">container_name</span><span class="pi">:</span> <span class="s">ps-docs</span>
+        <span class="na">source_dir</span><span class="pi">:</span> <span class="s1">'</span><span class="s">out/docs/*'</span>
+</code></pre></div></div><h3 id="using-with-azure-pipelines"> <a href="#using-with-azure-pipelines" class="anchor-heading" aria-labelledby="using-with-azure-pipelines"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Using with Azure Pipelines</h3><p>The following example shows how to setup Azure Pipelines to generate ARM template documentation in the markdown format. This example copies the generated markdown files to a designated blob storage.</p><ul><li>Create a new YAML pipeline with the Starter pipeline template.<li>Add a PowerShell task to:<ul><li>Install [PSDocs.Azure][module] module.<li>Scan for Azure template file recursively in the templates/ directory.<li>Generate a standard name of the markdown file. i.e. <code class="language-plaintext highlighter-rouge">&lt;name&gt;_&lt;version&gt;</code>.md<li>Generate the markdown to a specific directory.</ul><li>Add an <a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops">AzureFileCopy task</a> to copy the generated markdown to an Azure Storage Blob container.</ul><p>For example:</p><div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Example: .azure-pipelines/psdocs-blobstorage.yaml</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="na">job</span><span class="pi">:</span> <span class="s1">'</span><span class="s">generate_arm_template_documentation'</span>
+  <span class="na">displayName</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Generate</span><span class="nv"> </span><span class="s">ARM</span><span class="nv"> </span><span class="s">template</span><span class="nv"> </span><span class="s">docs'</span>
+  <span class="na">pool</span><span class="pi">:</span>
+    <span class="na">vmImage</span><span class="pi">:</span> <span class="s1">'</span><span class="s">windows-2019'</span>
+  <span class="na">steps</span><span class="pi">:</span>
+  <span class="c1"># STEP 1: Generate Markdowns using PSDocs</span>
+  <span class="pi">-</span> <span class="na">powershell</span><span class="pi">:</span> <span class="pi">|</span> 
+      <span class="s">Install-Module -Name 'PSDocs.Azure' -Repository PSGallery -force;</span>
+        <span class="s"># Scan for Azure template file recursively in the templates/ directory</span>
+        <span class="s">Get-AzDocTemplateFile -Path templates/ | ForEach-Object {</span>
+        <span class="s"># Generate a standard name of the markdown file. i.e. &lt;name&gt;_&lt;version&gt;.md</span>
+        <span class="s">$template = Get-Item -Path $_.TemplateFile;</span>
+        <span class="s">$templateName = $template.Directory.Parent.Name;</span>
+        <span class="s">$version = $template.Directory.Name;</span>
+        <span class="s">$docName = "$($templateName)_$version";</span>
+        <span class="s"># Generate markdown</span>
+        <span class="s">Invoke-PSDocument -Module PSDocs.Azure -OutputPath out/docs/ -InputObject $template.FullName -InstanceName $docName;</span>
+      <span class="s">}</span>
+    <span class="na">displayName</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Export</span><span class="nv"> </span><span class="s">template</span><span class="nv"> </span><span class="s">data'</span>
+    
+  <span class="c1"># STEP 2: Copy files to a storage account</span>
+  <span class="pi">-</span> <span class="na">task</span><span class="pi">:</span> <span class="s">AzureFileCopy@4</span>
+    <span class="na">displayName</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Copy</span><span class="nv"> </span><span class="s">files</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">storage</span><span class="nv"> </span><span class="s">account</span><span class="nv"> </span><span class="s">blob</span><span class="nv"> </span><span class="s">container'</span>
+    <span class="na">inputs</span><span class="pi">:</span>
+      <span class="na">SourcePath</span><span class="pi">:</span> <span class="s1">'</span><span class="s">out/docs/*'</span>
+      <span class="na">azureSubscription</span><span class="pi">:</span> <span class="s1">'</span><span class="s">psdocstest'</span>
+      <span class="na">Destination</span><span class="pi">:</span> <span class="s1">'</span><span class="s">AzureBlob'</span>
+      <span class="na">storage</span><span class="pi">:</span> <span class="s1">'</span><span class="s">&lt;storageaccountname&gt;'</span> 
+      <span class="na">ContainerName</span><span class="pi">:</span> <span class="s1">'</span><span class="s">ps-docs'</span>
+</code></pre></div></div></div></div><div class="search-overlay"></div></div>
