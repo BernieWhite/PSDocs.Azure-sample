@@ -21,6 +21,63 @@ PSDocs for Azure automatically generates documentation for Azure infrastructure 
 
 ## Getting started
 
-Hi there!
+### Annotate templates file
 
-You have landed on a sample for automatically generating documentation for Azure template.
+In its simplest structure, an Azure template has the following elements:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {  },
+  "variables": {  },
+  "functions": [  ],
+  "resources": [  ],
+  "outputs": {  }
+}
+```
+
+Additionally a `metadata` property can be added in most places throughout the template.
+For example:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "name": "Storage Account",
+        "description": "Create or update a Storage Account."
+    },
+    "parameters": {
+        "storageAccountName": {
+            "type": "string",
+            "metadata": {
+                "description": "Required. The name of the Storage Account."
+            }
+        },
+        "tags": {
+            "type": "object",
+            "defaultValue": {
+            },
+            "metadata": {
+                "description": "Optional. Tags to apply to the resource.",
+                "example": {
+                    "service": "<service_name>",
+                    "env": "prod"
+                }
+            }
+        }
+    },
+    "resources": [
+    ],
+    "outputs": {
+        "resourceId": {
+            "type": "string",
+            "value": "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
+            "metadata": {
+                "description": "A unique resource identifier for the storage account."
+            }
+        }
+    }
+}
+```
