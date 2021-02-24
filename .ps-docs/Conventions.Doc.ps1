@@ -17,10 +17,9 @@ Export-PSDocumentConvention 'AddMeta' {
 
 
     $metadata = GetTemplateMetadata -Path $PSDocs.TargetObject;
-    $Document.Metadata['title'] = [String]::Concat($version);
+    $Document.Metadata['title'] = $version;
     $Document.Metadata['parent'] = $metadata.name;
     $Document.Metadata['description'] = $metadata.description;
-    $Document.Metadata['template-path'] = $template;
     $Document.Metadata['layout'] = 'template';
 
     $PSDocs.Document.OutputPath = Join-Path -Path $PSDocs.Document.OutputPath -ChildPath $templateName
@@ -28,11 +27,10 @@ Export-PSDocumentConvention 'AddMeta' {
     
 
     foreach ($output in ($PSDocs.Output | Group-Object -Property OutputPath)) {
-        $header = Get-PSDocumentHeader -Path $output.Name;
         $indexPath = Join-Path -Path $output.Name -ChildPath 'index.md';
         @(
             '---'
-            "title: $($header.parent)"
+            "title: $($output.Group[0].metadata.parent)"
             'has_children: true'
             '---'
         ) | Set-Content -Path $indexPath;

@@ -86,7 +86,7 @@
     },
     "resources": [
         {
-            "comments": "Create or update a Storage Account.",
+            "comments": "Storage Account",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2019-06-01",
             "name": "[parameters('storageAccountName')]",
@@ -173,5 +173,14 @@
                 }
             }
         }
-    ]
+    ],
+    "outputs": {
+        "resourceId": {
+            "type": "string",
+            "value": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]",
+            "metadata": {
+                "description": "A unique resource identifier for the storage account."
+            }
+        }
+    }
 }

@@ -199,3 +199,6 @@ jobs:
       storage: '<storageaccountname>' 
       ContainerName: 'ps-docs'
 ```
+
+[create-workflow]: https://help.github.com/en/articles/configuring-a-workflow#creating-a-workflow-file
+[module]: https://www.powershellgallery.com/packages/PSDocs.Azure

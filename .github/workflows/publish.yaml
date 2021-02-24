@@ -16,6 +16,7 @@ jobs:
       - name: Use PSDocs
         shell: pwsh
         run: |-
+          Install-Module PSDocs -MinimumVersion '0.9.0-B2102002' -AllowPrerelease -Force;
           Install-Module PSDocs.Azure -MinimumVersion '0.2.0-B2102012' -AllowPrerelease -Force;
           Import-Module PSDocs.Azure;
           Get-AzDocTemplateFile -Path templates/ | ForEach-Object {

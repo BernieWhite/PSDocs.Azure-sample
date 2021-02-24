@@ -347,5 +347,14 @@
                 "principalType": "ServicePrincipal"
             }
         }
-    ]
+    ],
+    "outputs": {
+        "resourceId": {
+            "type": "string",
+            "value": "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
+            "metadata": {
+                "description": "A unique resource identifier for the storage account."
+            }
+        }
+    }
 }
