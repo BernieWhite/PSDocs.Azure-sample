@@ -27,7 +27,7 @@ jobs:
               $templateName = $template.Directory.Parent.Name;
               $version = $template.Directory.Name;
               $docName = "$($templateName)_$version";
-              Invoke-PSDocument -Module PSDocs.Azure -OutputPath docs/templates/ -InputObject $template.FullName -InstanceName $docName;
+              Invoke-PSDocument -Path .ps-docs/ -Module PSDocs.Azure -OutputPath docs/templates/ -InputObject $template.FullName -InstanceName $docName;
           }
 
       - name: 💎 setup ruby
