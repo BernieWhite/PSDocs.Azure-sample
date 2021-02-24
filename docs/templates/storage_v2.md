@@ -1,6 +1,13 @@
 # Storage Account
 
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+1. TOC
 {:toc}
+</details>
 ![Template checks](https://img.shields.io/badge/Template-Pass-green?style=flat-square)
 
 Create or update a Storage Account.
