@@ -62,4 +62,4 @@ heading_anchors: true
 # Aux links for the upper right navigation
 aux_links:
   "PSDocs for Azure on GitHub":
-    - "github.com/Azure/PSDocs.Azure"
+    - "https://github.com/Azure/PSDocs.Azure"

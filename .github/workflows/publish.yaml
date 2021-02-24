@@ -1,13 +1,10 @@
 
-name: Build and deploy jekyll site
+name: Build and deploy pages
 
 on:
   push:
     branches:
       - main
-      # - source
-      # It is highly recommended that you only run this action on push to a
-      # specific branch, eg. master or source (if on *.github.io repo)
 
 jobs:
   jekyll:
@@ -24,10 +21,7 @@ jobs:
           Get-AzDocTemplateFile -Path templates/ | ForEach-Object {
               # Generate a standard name of the markdown file. i.e. <name>_<version>.md
               $template = Get-Item -Path $_.TemplateFile;
-              $templateName = $template.Directory.Parent.Name;
-              $version = $template.Directory.Name;
-              $docName = "$($templateName)_$version";
-              Invoke-PSDocument -Path .ps-docs/ -Module PSDocs.Azure -OutputPath docs/templates/ -InputObject $template.FullName -InstanceName $docName;
+              Invoke-PSDocument -Path .ps-docs/ -Module PSDocs.Azure -OutputPath docs/templates/ -InputObject $template.FullName;
           }
 
       - name: 💎 setup ruby
@@ -42,7 +36,6 @@ jobs:
       - name: Build site
         run: |
           bundle exec jekyll build
-        #  --config _configpages.yml --destination ./distn/options/#build-command-options
 
       - name: 🚀 deploy
         uses: peaceiris/actions-gh-pages@v3

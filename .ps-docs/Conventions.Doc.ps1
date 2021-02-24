@@ -26,10 +26,11 @@ Export-PSDocumentConvention 'AddMeta' {
     
 
     foreach ($output in ($PSDocs.Output | Group-Object -Property OutputPath)) {
+        $header = Get-PSDocumentHeader -Path $output.Name;
         $indexPath = Join-Path -Path $output.Name -ChildPath 'index.md';
         @(
             '---'
-            'title: Storage'
+            "title: $($header.parent)"
             'has_children: true'
             '---'
         ) | Set-Content -Path $indexPath;
