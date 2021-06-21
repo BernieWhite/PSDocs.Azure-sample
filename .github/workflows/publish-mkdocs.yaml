@@ -1,0 +1,47 @@
+
+name: Build and deploy pages (MkDocs)
+
+on:
+  push:
+    branches:
+      - with-mkdocs
+
+jobs:
+  jekyll:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📂 setup
+        uses: actions/checkout@v2
+
+      - name: Use PSDocs
+        shell: pwsh
+        run: |-
+          Install-Module PSDocs -MinimumVersion '0.9.0-B2102002' -AllowPrerelease -Force;
+          Install-Module PSDocs.Azure -MinimumVersion '0.3.0' -AllowPrerelease -Force;
+          Import-Module PSDocs.Azure;
+          Get-AzDocTemplateFile -Path templates/ | ForEach-Object {
+              # Generate a standard name of the markdown file. i.e. <name>_<version>.md
+              $template = Get-Item -Path $_.TemplateFile;
+              Invoke-PSDocument -Path .ps-docs/ -Module PSDocs.Azure -OutputPath docs/templates/ -InputObject $template.FullName -Convention 'AddMeta';
+          }
+
+      - name: Setup Python
+        uses: actions/setup-python@v2.2.2
+        with:
+          python-version: '3.9'
+          architecture: 'x64'
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install wheel
+          python3 -m pip install -r requirements-docs.txt
+
+      - name: Build site
+        run: mkdocs build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
