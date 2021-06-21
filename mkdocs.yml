@@ -17,8 +17,8 @@ theme:
   palette:
     primary: black
     accent: blue
-  logo: assets/ms_icon.png
-  favicon: assets/ms_icon.png
+  # logo: assets/ms_icon.png
+  # favicon: assets/ms_icon.png
   icon:
     repo: fontawesome/brands/github
   features:
