@@ -12,7 +12,6 @@ repo_discussion: https://github.com/Azure/PSRule.Rules.Azure/discussions
 theme:
   language: en
   name: material
-  custom_dir: overrides
   font:
     text: Roboto
   palette:
