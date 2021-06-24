@@ -16,7 +16,7 @@ jobs:
       - name: Generate docs
         shell: pwsh
         run: |-
-          Install-Module PSDocs.Azure -MinimumVersion '0.3.0' -AllowPrerelease -Force;
+          Install-Module PSDocs.Azure -MinimumVersion '0.3.0' -Force;
           Get-AzDocTemplateFile -Path templates/ | ForEach-Object {
               Invoke-PSDocument -Path .ps-docs/ -Module PSDocs.Azure -OutputPath docs/azure/templates/ -InputObject $_.TemplateFile -Convention 'AddMkDocsMeta'
           }
