@@ -24,7 +24,7 @@ def build_template_nav(nav: mkdocs.structure.nav.Navigation, config: mkdocs.conf
     # nav.items.append(item)
     
     # referenceItem.children.append(item)
-    item: mkdocs.structure.nav.Section = mkdocs.structure.nav.Section("Templates", children)
+    # item: mkdocs.structure.nav.Section = mkdocs.structure.nav.Section("Templates", children)
     # mkdocs.structure.nav._add_parent_links(item)
-    nav.items.append(item)
+    nav.items.append(mkdocs.structure.nav.Section("Templates", children))
     return nav
