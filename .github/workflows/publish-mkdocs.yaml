@@ -1,5 +1,5 @@
 
-name: Build and deploy pages (MkDocs)
+name: Build and publish docs (MkDocs)
 
 on:
   push:
@@ -7,25 +7,21 @@ on:
       - with-mkdocs
 
 jobs:
-  build:
-    name: Build
+  publish:
+    name: Publish
     runs-on: ubuntu-latest
     steps:
-      - name: 📂 setup
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-      - name: Use PSDocs
+      - name: Generate docs
         shell: pwsh
         run: |-
-          Install-Module PSDocs -MinimumVersion '0.9.0-B2102002' -AllowPrerelease -Force;
           Install-Module PSDocs.Azure -MinimumVersion '0.3.0' -AllowPrerelease -Force;
-          Import-Module PSDocs.Azure;
           Get-AzDocTemplateFile -Path templates/ | ForEach-Object {
               # Generate a standard name of the markdown file. i.e. <name>_<version>.md
               $template = Get-Item -Path $_.TemplateFile;
               Invoke-PSDocument -Path .ps-docs/ -Module PSDocs.Azure -OutputPath docs/azure/templates/ -InputObject $template.FullName -Convention 'AddMkDocsMeta'
           }
-          (dir . -recurse).FullName
 
       - name: Setup Python
         uses: actions/setup-python@v2.2.2
@@ -41,12 +37,6 @@ jobs:
 
       - name: Build site
         run: mkdocs build --verbose
-
-  # publish:
-  #   name: Publish
-  #   runs-on: ubuntu-latest
-  #   needs: build
-  #   steps:
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
