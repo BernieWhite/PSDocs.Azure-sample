@@ -10,14 +10,11 @@ repo_issue: https://github.com/Azure/PSRule.Rules.Azure/issues
 repo_discussion: https://github.com/Azure/PSRule.Rules.Azure/discussions
 
 theme:
-  language: en
   name: material
   font:
     text: Roboto
   palette:
-    primary: black
-    accent: blue
-  favicon: assets/ms_icon.png
+    primary: blue
   icon:
     repo: fontawesome/brands/github
     logo: material/microsoft-azure
@@ -28,30 +25,25 @@ theme:
       level: 1
   - navigation.tabs
 
-# nav:
-#   - Home: index.md
-#   - Templates:
-#     - Overview: azure/templates.md
-
 markdown_extensions:
-  - admonition
-  - abbr
-  - attr_list
-  - def_list
-  - footnotes
-  - meta
-  - md_in_html
-  - pymdownx.snippets
-  - pymdownx.highlight
-  - pymdownx.superfences
-  - pymdownx.pathconverter
-  - pymdownx.tabbed
-  - pymdownx.details
-  - mdx_truly_sane_lists
-  - pymdownx.tasklist
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+  # - admonition
+  # - abbr
+  # - attr_list
+  # - def_list
+  # - footnotes
+  # - meta
+  # - md_in_html
+  # - pymdownx.snippets
+  # - pymdownx.highlight
+  # - pymdownx.superfences
+  # - pymdownx.pathconverter
+  # - pymdownx.tabbed
+  # - pymdownx.details
+  # - mdx_truly_sane_lists
+  # - pymdownx.tasklist
+  # - pymdownx.emoji:
+  #     emoji_index: !!python/name:materialx.emoji.twemoji
+  #     emoji_generator: !!python/name:materialx.emoji.to_svg
   - toc:
       permalink: '#'
       separator: ''
