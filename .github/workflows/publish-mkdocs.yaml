@@ -41,7 +41,7 @@ jobs:
           python3 -m pip install -r requirements-docs.txt
 
       - name: Build site
-        run: mkdocs build
+        run: mkdocs build --verbose
 
   # publish:
   #   name: Publish
