@@ -19,6 +19,6 @@ def build_template_nav(nav: mkdocs.structure.nav.Navigation, config: mkdocs.conf
         if f._get_dest_path(False).__contains__("/templates/"):
             children.append(mkdocs.structure.pages.Page(f._get_stem(), f, config))
 
-    nav.children.append(item)
+    nav.items.append(item)
     mkdocs.structure.nav._add_parent_links(nav)
     return nav
