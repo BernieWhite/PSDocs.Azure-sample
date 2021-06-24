@@ -30,7 +30,8 @@ theme:
 
 nav:
   - Home: index.md
-  # - Templates:
+  - Templates:
+    - Overview: index.md
 
 markdown_extensions:
   - admonition
