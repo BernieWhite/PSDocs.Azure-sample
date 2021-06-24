@@ -1,7 +1,6 @@
 site_name: Contoso Docs for Azure
 site_url: https://berniewhite.github.io/PSDocs.Azure-sample
 site_description: An example site for PSDocs for Azure
-site_author: Bernie White
 
 repo_url: https://github.com/Azure/PSRule.Rules.Azure/
 edit_uri: ''
