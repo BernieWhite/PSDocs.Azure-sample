@@ -1,5 +1,5 @@
 
-name: Build and publish docs (MkDocs)
+name: Publish docs (MkDocs)
 
 on:
   push:
@@ -18,9 +18,7 @@ jobs:
         run: |-
           Install-Module PSDocs.Azure -MinimumVersion '0.3.0' -AllowPrerelease -Force;
           Get-AzDocTemplateFile -Path templates/ | ForEach-Object {
-              # Generate a standard name of the markdown file. i.e. <name>_<version>.md
-              $template = Get-Item -Path $_.TemplateFile;
-              Invoke-PSDocument -Path .ps-docs/ -Module PSDocs.Azure -OutputPath docs/azure/templates/ -InputObject $template.FullName -Convention 'AddMkDocsMeta'
+              Invoke-PSDocument -Path .ps-docs/ -Module PSDocs.Azure -OutputPath docs/azure/templates/ -InputObject $_.TemplateFile -Convention 'AddMkDocsMeta'
           }
 
       - name: Setup Python
