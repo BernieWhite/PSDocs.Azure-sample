@@ -15,7 +15,7 @@
       
         <link rel="canonical" href="https://berniewhite.github.io/PSDocs.Azure-sample/azure/templates/Container-Registry/v1/">
       
-      <link rel="icon" href="../../../../assets/ms_icon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
     
     
@@ -31,7 +31,7 @@
         
           
           
-          <meta name="theme-color" content="#000000">
+          <meta name="theme-color" content="#2094f3">
         
       
     
@@ -60,7 +60,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="black" data-md-color-accent="blue">
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue" data-md-color-accent="">
   
     
     <script>function __prefix(e){return new URL("../../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
@@ -758,45 +758,47 @@
 <p><img alt="Parameter Setting" src="https://img.shields.io/badge/parameter-optional-green?style=flat-square" /></p>
 <p>Optional. The container registry SKU.</p>
 <ul>
-<li>Default value: <code>Basic</code></li>
-</ul>
-<ul>
-<li>Allowed values: <code>Basic</code>, <code>Standard</code>, <code>Premium</code></li>
+<li>
+<p>Default value: <code>Basic</code></p>
+</li>
+<li>
+<p>Allowed values: <code>Basic</code>, <code>Standard</code>, <code>Premium</code></p>
+</li>
 </ul>
 <h3 id="tags">tags<a class="headerlink" href="#tags" title="Permanent link">#</a></h3>
 <p><img alt="Parameter Setting" src="https://img.shields.io/badge/parameter-optional-green?style=flat-square" /></p>
 <p>Optional. Tags to apply to the resource.</p>
 <h2 id="snippets">Snippets<a class="headerlink" href="#snippets" title="Permanent link">#</a></h2>
 <h3 id="parameterfile">Parameter file<a class="headerlink" href="#parameterfile" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;$schema&quot;</span><span class="p">:</span> <span class="s2">&quot;https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;contentVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0.0&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;template&quot;</span><span class="p">:</span> <span class="s2">&quot;templates/acr/v1/template.json&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;registryName&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;name&gt;&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;registrySku&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Basic&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;service&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;service_name&gt;&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;env&quot;</span><span class="p">:</span> <span class="s2">&quot;prod&quot;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre><code class="language-json">{
+    &quot;$schema&quot;: &quot;https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#&quot;,
+    &quot;contentVersion&quot;: &quot;1.0.0.0&quot;,
+    &quot;metadata&quot;: {
+        &quot;template&quot;: &quot;templates/acr/v1/template.json&quot;
+    },
+    &quot;parameters&quot;: {
+        &quot;registryName&quot;: {
+            &quot;value&quot;: &quot;&lt;name&gt;&quot;
+        },
+        &quot;registrySku&quot;: {
+            &quot;value&quot;: &quot;Basic&quot;
+        },
+        &quot;tags&quot;: {
+            &quot;value&quot;: {
+                &quot;service&quot;: &quot;&lt;service_name&gt;&quot;,
+                &quot;env&quot;: &quot;prod&quot;
+            }
+        }
+    }
+}
+</code></pre>
 <h3 id="commandline">Command line<a class="headerlink" href="#commandline" title="Permanent link">#</a></h3>
 <h4 id="powershell">PowerShell<a class="headerlink" href="#powershell" title="Permanent link">#</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nb">New-AzResourceGroupDeployment</span> <span class="n">-Name</span> <span class="p">&lt;</span><span class="n">deployment-name</span><span class="p">&gt;</span> <span class="n">-ResourceGroupName</span> <span class="p">&lt;</span><span class="n">resource-group-name</span><span class="p">&gt;</span> <span class="n">-TemplateFile</span> <span class="p">&lt;</span><span class="n">path-to-template</span><span class="p">&gt;</span> <span class="n">-TemplateParameterFile</span> <span class="p">&lt;</span><span class="n">path-to-templateparameter</span><span class="p">&gt;</span>
-</code></pre></div>
+<pre><code class="language-powershell">New-AzResourceGroupDeployment -Name &lt;deployment-name&gt; -ResourceGroupName &lt;resource-group-name&gt; -TemplateFile &lt;path-to-template&gt; -TemplateParameterFile &lt;path-to-templateparameter&gt;
+</code></pre>
 <h4 id="azurecli">Azure CLI<a class="headerlink" href="#azurecli" title="Permanent link">#</a></h4>
-<div class="highlight"><pre><span></span><code>az group deployment create --name &lt;deployment-name&gt; --resource-group &lt;resource-group-name&gt; --template-file &lt;path-to-template&gt; --parameters @&lt;path-to-templateparameterfile&gt;
-</code></pre></div>
+<pre><code class="language-text">az group deployment create --name &lt;deployment-name&gt; --resource-group &lt;resource-group-name&gt; --template-file &lt;path-to-template&gt; --parameters @&lt;path-to-templateparameterfile&gt;
+</code></pre>
                 
                   
                     
