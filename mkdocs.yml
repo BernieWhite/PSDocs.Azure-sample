@@ -28,34 +28,9 @@ theme:
       level: 1
   - navigation.tabs
 
-# nav:
-#   - Home: index.md
-#   - Getting started:
-#     - Overview: features.md
-#     - Installation: install-instructions.md
-#     - Using metadata: using-metadata.md
-#     - Creating your pipeline: creating-your-pipeline.md
-#     - Validating locally: validating-locally.md
-#     - Customization:
-#       - Storing custom rules: customization/index.md
-#       - Enforcing custom tags: customization/enforce-custom-tags/index.md
-#     - Troubleshooting: troubleshooting.md
-#     # - Data privacy: data-privacy.md
-#     - License and contributing: license-contributing.md
-#     - Releases:
-#       - Change log:
-#         - v1: 'CHANGELOG-v1.md'
-#         - v0: 'CHANGELOG-v0.md'
-#       # - Upgrade guide: upgrading.md
-#       # - Deprecations: deprecations.md
-#     - Support: support.md
-#   - Setup:
-#     - Configuring options: setup/configuring-options.md
-#     - Configuring rule defaults: setup/configuring-rules.md
-#     - Configuring expansion: setup/configuring-expansion.md
-#   - Reference:
-#     - By module: en/rules/module.md
-#     - By resource: en/rules/resource.md
+nav:
+  - Home: index.md
+  # - Templates:
 
 markdown_extensions:
   - admonition

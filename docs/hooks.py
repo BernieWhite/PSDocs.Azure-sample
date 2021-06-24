@@ -9,19 +9,22 @@ import mkdocs.structure.pages
 
 # Dynamically build template nav
 def build_template_nav(nav: mkdocs.structure.nav.Navigation, config: mkdocs.config.Config, files: mkdocs.structure.files.Files) -> mkdocs.structure.nav.Navigation:
-    # children = []
+    children = []
     # item: mkdocs.structure.nav.Section = mkdocs.structure.nav.Section("Templates", children)
-    templates: mkdocs.structure.nav.Section = next(x for x in nav if x.title == "Templates")
+    # templates: mkdocs.structure.nav.Section = 
+    # next(x for x in nav if x.title == "Templates")
 
     for f in files:
         if not f.is_documentation_page():
             continue
 
         if f._get_dest_path(False).__contains__("/templates/"):
-            templates.children.append(mkdocs.structure.pages.Page(f._get_stem(), f, config))
+            children.append(mkdocs.structure.pages.Page(f._get_stem(), f, config))
 
     # nav.items.append(item)
     
     # referenceItem.children.append(item)
+    item: mkdocs.structure.nav.Section = mkdocs.structure.nav.Section("Templates", children)
+    nav.items.append(item)
     mkdocs.structure.nav._add_parent_links(nav)
     return nav
