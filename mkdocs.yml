@@ -1,13 +1,10 @@
 site_name: Contoso Docs for Azure
 site_url: https://berniewhite.github.io/PSDocs.Azure-sample
-site_description: A suite of rules to validate Azure resources and infrastructure as code (IaC) using PSRule.
-site_author: Microsoft
+site_description: An example site for PSDocs for Azure
+site_author: Bernie White
 
 repo_url: https://github.com/Azure/PSRule.Rules.Azure/
-edit_uri: blob/main/docs/
-
-repo_issue: https://github.com/Azure/PSRule.Rules.Azure/issues
-repo_discussion: https://github.com/Azure/PSRule.Rules.Azure/discussions
+edit_uri: ''
 
 theme:
   name: material
@@ -26,44 +23,11 @@ theme:
   - navigation.tabs
 
 markdown_extensions:
-  # - admonition
-  # - abbr
-  # - attr_list
-  # - def_list
-  # - footnotes
-  # - meta
-  # - md_in_html
-  # - pymdownx.snippets
-  # - pymdownx.highlight
-  # - pymdownx.superfences
-  # - pymdownx.pathconverter
-  # - pymdownx.tabbed
-  # - pymdownx.details
-  # - mdx_truly_sane_lists
-  # - pymdownx.tasklist
-  # - pymdownx.emoji:
-  #     emoji_index: !!python/name:materialx.emoji.twemoji
-  #     emoji_generator: !!python/name:materialx.emoji.to_svg
   - toc:
       permalink: '#'
-      separator: ''
+      separator: '-'
 
 plugins:
 - search
 - git-revision-date
-# - mkdocs-simple-hooks:
-#     hooks:
-#       on_nav: "docs.hooks:build_template_nav"
 - awesome-pages
-
-extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/Azure/PSRule.Rules.Azure/
-
-  # alternate:
-
-  #   # Switch to English
-  #   - name: English
-  #     link: /en/
-  #     lang: en
