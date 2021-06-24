@@ -17,10 +17,10 @@ theme:
   palette:
     primary: black
     accent: blue
-  # logo: assets/ms_icon.png
-  # favicon: assets/ms_icon.png
+  favicon: assets/ms_icon.png
   icon:
     repo: fontawesome/brands/github
+    logo: material/microsoft-azure
   features:
   - navigation.instant
   - navigation.indexes
