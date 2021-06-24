@@ -1,4 +1,4 @@
-site_name: PSDocs for Azure sample
+site_name: Azure DevOps Docs
 site_url: https://berniewhite.github.io/PSDocs.Azure-sample
 site_description: A suite of rules to validate Azure resources and infrastructure as code (IaC) using PSRule.
 site_author: Microsoft
