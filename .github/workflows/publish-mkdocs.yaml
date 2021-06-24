@@ -25,6 +25,7 @@ jobs:
               $template = Get-Item -Path $_.TemplateFile;
               Invoke-PSDocument -Path .ps-docs/ -Module PSDocs.Azure -OutputPath docs/templates/ -InputObject $template.FullName -Convention 'AddMeta';
           }
+          (dir . -recurse).FullName
 
       - name: Setup Python
         uses: actions/setup-python@v2.2.2
