@@ -83,6 +83,9 @@ markdown_extensions:
 plugins:
 - search
 - git-revision-date
+- mkdocs-simple-hooks:
+    hooks:
+      on_nav: "docs.hooks:build_template_nav"
 
 extra:
   social:
