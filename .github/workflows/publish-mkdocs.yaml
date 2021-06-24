@@ -23,8 +23,7 @@ jobs:
           Get-AzDocTemplateFile -Path templates/ | ForEach-Object {
               # Generate a standard name of the markdown file. i.e. <name>_<version>.md
               $template = Get-Item -Path $_.TemplateFile;
-              Invoke-PSDocument -Path .ps-docs/ -Module PSDocs.Azure -OutputPath docs/templates/ -InputObject $template.FullName -Convention 'Azure.NameByParentPath'
-              # -Convention 'AddMeta';
+              Invoke-PSDocument -Path .ps-docs/ -Module PSDocs.Azure -OutputPath docs/azure/templates/ -InputObject $template.FullName -Convention 'AddMkDocsMeta'
           }
           (dir . -recurse).FullName
 

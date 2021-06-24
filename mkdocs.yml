@@ -28,10 +28,10 @@ theme:
       level: 1
   - navigation.tabs
 
-nav:
-  - Home: index.md
-  - Templates:
-    - Overview: templates/overview.md
+# nav:
+#   - Home: index.md
+#   - Templates:
+#     - Overview: azure/templates.md
 
 markdown_extensions:
   - admonition
@@ -59,9 +59,10 @@ markdown_extensions:
 plugins:
 - search
 - git-revision-date
-- mkdocs-simple-hooks:
-    hooks:
-      on_nav: "docs.hooks:build_template_nav"
+# - mkdocs-simple-hooks:
+#     hooks:
+#       on_nav: "docs.hooks:build_template_nav"
+- awesome-pages
 
 extra:
   social:

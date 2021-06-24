@@ -36,3 +36,27 @@ Export-PSDocumentConvention 'AddMeta' {
         ) | Set-Content -Path $indexPath;
     }
 }
+
+
+Export-PSDocumentConvention 'AddMkDocsMeta' {
+    $template = Get-Item -Path $PSDocs.TargetObject;
+
+    # Get parent directory paths where <templateName>/v<version>/template.json
+    $version = $template.Directory.Name;
+    $templateName = $template.Directory.Parent.Name;
+    $PSDocs.Document.Data['template.version'] = $version;
+    $PSDocs.Document.Data['template.name'] = $templateName;
+
+    $docName = $version;
+    $PSDocs.Document.InstanceName = $docName;
+
+    $metadata = GetTemplateMetadata -Path $PSDocs.TargetObject;
+    $Document.Metadata['title'] = $version;
+    $Document.Metadata['description'] = $metadata.description;
+
+    if ($Null -ne $metadata.name) {
+        $templateName = $metadata.name.Replace(' ', '-');
+    }
+
+    $PSDocs.Document.OutputPath = Join-Path -Path $PSDocs.Document.OutputPath -ChildPath $templateName
+}
