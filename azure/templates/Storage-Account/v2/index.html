@@ -1,0 +1,1211 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Create or update a Storage Account.">
+      
+      
+      
+        <meta name="author" content="Microsoft">
+      
+      
+        <link rel="canonical" href="https://berniewhite.github.io/PSDocs.Azure-sample/azure/templates/Storage-Account/v2/">
+      
+      <link rel="icon" href="../../../../assets/ms_icon.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
+    
+    
+      
+        <title>v2 - Contoso Docs for Azure</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7C&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:""}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="black" data-md-color-accent="blue">
+  
+    
+    <script>function __prefix(e){return new URL("../../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#storageaccount" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Contoso Docs for Azure" class="md-header__button md-logo" aria-label="Contoso Docs for Azure" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.05 4.24 6.56 18.05 2 18l5.09-8.76 5.96-5m.7 1.09L22 19.76H6.74l9.3-1.66-4.87-5.79 2.58-6.98z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Contoso Docs for Azure
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              v2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Azure/PSRule.Rules.Azure/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../overview/" class="md-tabs__link md-tabs__link--active">
+        Templates
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Contoso Docs for Azure" class="md-nav__button md-logo" aria-label="Contoso Docs for Azure" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.05 4.24 6.56 18.05 2 18l5.09-8.76 5.96-5m.7 1.09L22 19.76H6.74l9.3-1.66-4.87-5.79 2.58-6.98z"/></svg>
+
+    </a>
+    Contoso Docs for Azure
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Azure/PSRule.Rules.Azure/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Templates
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Templates" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Templates
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2_2">
+        Templates
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Templates" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Templates
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_1" type="checkbox" id="__nav_2_2_1" >
+      
+      <label class="md-nav__link" for="__nav_2_2_1">
+        Container Registry
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Container Registry" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Container Registry
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Container-Registry/v1/" class="md-nav__link">
+        v1
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_2" type="checkbox" id="__nav_2_2_2" >
+      
+      <label class="md-nav__link" for="__nav_2_2_2">
+        Key Vault
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Key Vault" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Key Vault
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Key-Vault/v1/" class="md-nav__link">
+        v1
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_3" type="checkbox" id="__nav_2_2_3" checked>
+      
+      <label class="md-nav__link" for="__nav_2_2_3">
+        Storage Account
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Storage Account" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Storage Account
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v1/" class="md-nav__link">
+        v1
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          v2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        v2
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#storageaccountname" class="md-nav__link">
+    storageAccountName
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#location" class="md-nav__link">
+    location
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sku" class="md-nav__link">
+    sku
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suffixlength" class="md-nav__link">
+    suffixLength
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#containers" class="md-nav__link">
+    containers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lifecyclerules" class="md-nav__link">
+    lifecycleRules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blobsoftdeletedays" class="md-nav__link">
+    blobSoftDeleteDays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#containersoftdeletedays" class="md-nav__link">
+    containerSoftDeleteDays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shares" class="md-nav__link">
+    shares
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uselargefileshares" class="md-nav__link">
+    useLargeFileShares
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sharesoftdeletedays" class="md-nav__link">
+    shareSoftDeleteDays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allowblobpublicaccess" class="md-nav__link">
+    allowBlobPublicAccess
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keyvaultprincipalid" class="md-nav__link">
+    keyVaultPrincipalId
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tags" class="md-nav__link">
+    tags
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outputs" class="md-nav__link">
+    Outputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snippets" class="md-nav__link">
+    Snippets
+  </a>
+  
+    <nav class="md-nav" aria-label="Snippets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameterfile" class="md-nav__link">
+    Parameter file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commandline" class="md-nav__link">
+    Command line
+  </a>
+  
+    <nav class="md-nav" aria-label="Command line">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#powershell" class="md-nav__link">
+    PowerShell
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#azurecli" class="md-nav__link">
+    Azure CLI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#storageaccountname" class="md-nav__link">
+    storageAccountName
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#location" class="md-nav__link">
+    location
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sku" class="md-nav__link">
+    sku
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suffixlength" class="md-nav__link">
+    suffixLength
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#containers" class="md-nav__link">
+    containers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lifecyclerules" class="md-nav__link">
+    lifecycleRules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blobsoftdeletedays" class="md-nav__link">
+    blobSoftDeleteDays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#containersoftdeletedays" class="md-nav__link">
+    containerSoftDeleteDays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shares" class="md-nav__link">
+    shares
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uselargefileshares" class="md-nav__link">
+    useLargeFileShares
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sharesoftdeletedays" class="md-nav__link">
+    shareSoftDeleteDays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allowblobpublicaccess" class="md-nav__link">
+    allowBlobPublicAccess
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keyvaultprincipalid" class="md-nav__link">
+    keyVaultPrincipalId
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tags" class="md-nav__link">
+    tags
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outputs" class="md-nav__link">
+    Outputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snippets" class="md-nav__link">
+    Snippets
+  </a>
+  
+    <nav class="md-nav" aria-label="Snippets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameterfile" class="md-nav__link">
+    Parameter file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commandline" class="md-nav__link">
+    Command line
+  </a>
+  
+    <nav class="md-nav" aria-label="Command line">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#powershell" class="md-nav__link">
+    PowerShell
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#azurecli" class="md-nav__link">
+    Azure CLI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/azure/templates/Storage-Account/v2.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="storageaccount">Storage Account<a class="headerlink" href="#storageaccount" title="Permanent link">#</a></h1>
+<p><img alt="Template checks" src="https://img.shields.io/badge/Template-Pass-green?style=flat-square" /></p>
+<p>Create or update a Storage Account.</p>
+<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Parameter name</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>storageAccountName</td>
+<td>Yes</td>
+<td>Required. The name of the Storage Account.</td>
+</tr>
+<tr>
+<td>location</td>
+<td>No</td>
+<td>Optional. The Azure region to deploy to.</td>
+</tr>
+<tr>
+<td>sku</td>
+<td>No</td>
+<td>Optional. Crease the Storage Account as LRS or GRS.</td>
+</tr>
+<tr>
+<td>suffixLength</td>
+<td>No</td>
+<td>Optional. Determine how many additional characters are added to the storage account name as a suffix.</td>
+</tr>
+<tr>
+<td>containers</td>
+<td>No</td>
+<td>Optional. An array of storage containers to create on the storage account.</td>
+</tr>
+<tr>
+<td>lifecycleRules</td>
+<td>No</td>
+<td>Optional. An array of lifecycle management policies for the storage account.</td>
+</tr>
+<tr>
+<td>blobSoftDeleteDays</td>
+<td>No</td>
+<td>Optional. The number of days to retain deleted blobs. When set to 0, soft delete is disabled.</td>
+</tr>
+<tr>
+<td>containerSoftDeleteDays</td>
+<td>No</td>
+<td>Optional. The number of days to retain deleted containers. When set to 0, soft delete is disabled.</td>
+</tr>
+<tr>
+<td>shares</td>
+<td>No</td>
+<td>Optional. An array of file shares to create on the storage account.</td>
+</tr>
+<tr>
+<td>useLargeFileShares</td>
+<td>No</td>
+<td>Optional. Determines if large file shares are enabled. This can not be disabled once enabled.</td>
+</tr>
+<tr>
+<td>shareSoftDeleteDays</td>
+<td>No</td>
+<td>Optional. The number of days to retain deleted shares. When set to 0, soft delete is disabled.</td>
+</tr>
+<tr>
+<td>allowBlobPublicAccess</td>
+<td>No</td>
+<td>Optional. Determines if any containers can be configured with the anonymous access types of blob or container.</td>
+</tr>
+<tr>
+<td>keyVaultPrincipalId</td>
+<td>No</td>
+<td>Optional. Set to the objectId of Azure Key Vault to delegated permission for use with Key Managed Storage Accounts.</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>No</td>
+<td>Optional. Tags to apply to the resource.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="storageaccountname">storageAccountName<a class="headerlink" href="#storageaccountname" title="Permanent link">#</a></h3>
+<p><img alt="Parameter Setting" src="https://img.shields.io/badge/parameter-required-orange?style=flat-square" /></p>
+<p>Required. The name of the Storage Account.</p>
+<h3 id="location">location<a class="headerlink" href="#location" title="Permanent link">#</a></h3>
+<p><img alt="Parameter Setting" src="https://img.shields.io/badge/parameter-optional-green?style=flat-square" /></p>
+<p>Optional. The Azure region to deploy to.</p>
+<ul>
+<li>Default value: <code>[resourceGroup().location]</code></li>
+</ul>
+<h3 id="sku">sku<a class="headerlink" href="#sku" title="Permanent link">#</a></h3>
+<p><img alt="Parameter Setting" src="https://img.shields.io/badge/parameter-optional-green?style=flat-square" /></p>
+<p>Optional. Crease the Storage Account as LRS or GRS.</p>
+<ul>
+<li>Default value: <code>Standard_LRS</code></li>
+</ul>
+<ul>
+<li>Allowed values: <code>Standard_LRS</code>, <code>Standard_GRS</code></li>
+</ul>
+<h3 id="suffixlength">suffixLength<a class="headerlink" href="#suffixlength" title="Permanent link">#</a></h3>
+<p><img alt="Parameter Setting" src="https://img.shields.io/badge/parameter-optional-green?style=flat-square" /></p>
+<p>Optional. Determine how many additional characters are added to the storage account name as a suffix.</p>
+<ul>
+<li>Default value: <code>0</code></li>
+</ul>
+<h3 id="containers">containers<a class="headerlink" href="#containers" title="Permanent link">#</a></h3>
+<p><img alt="Parameter Setting" src="https://img.shields.io/badge/parameter-optional-green?style=flat-square" /></p>
+<p>Optional. An array of storage containers to create on the storage account.</p>
+<h3 id="lifecyclerules">lifecycleRules<a class="headerlink" href="#lifecyclerules" title="Permanent link">#</a></h3>
+<p><img alt="Parameter Setting" src="https://img.shields.io/badge/parameter-optional-green?style=flat-square" /></p>
+<p>Optional. An array of lifecycle management policies for the storage account.</p>
+<h3 id="blobsoftdeletedays">blobSoftDeleteDays<a class="headerlink" href="#blobsoftdeletedays" title="Permanent link">#</a></h3>
+<p><img alt="Parameter Setting" src="https://img.shields.io/badge/parameter-optional-green?style=flat-square" /></p>
+<p>Optional. The number of days to retain deleted blobs. When set to 0, soft delete is disabled.</p>
+<ul>
+<li>Default value: <code>0</code></li>
+</ul>
+<h3 id="containersoftdeletedays">containerSoftDeleteDays<a class="headerlink" href="#containersoftdeletedays" title="Permanent link">#</a></h3>
+<p><img alt="Parameter Setting" src="https://img.shields.io/badge/parameter-optional-green?style=flat-square" /></p>
+<p>Optional. The number of days to retain deleted containers. When set to 0, soft delete is disabled.</p>
+<ul>
+<li>Default value: <code>0</code></li>
+</ul>
+<h3 id="shares">shares<a class="headerlink" href="#shares" title="Permanent link">#</a></h3>
+<p><img alt="Parameter Setting" src="https://img.shields.io/badge/parameter-optional-green?style=flat-square" /></p>
+<p>Optional. An array of file shares to create on the storage account.</p>
+<h3 id="uselargefileshares">useLargeFileShares<a class="headerlink" href="#uselargefileshares" title="Permanent link">#</a></h3>
+<p><img alt="Parameter Setting" src="https://img.shields.io/badge/parameter-optional-green?style=flat-square" /></p>
+<p>Optional. Determines if large file shares are enabled. This can not be disabled once enabled.</p>
+<ul>
+<li>Default value: <code>False</code></li>
+</ul>
+<h3 id="sharesoftdeletedays">shareSoftDeleteDays<a class="headerlink" href="#sharesoftdeletedays" title="Permanent link">#</a></h3>
+<p><img alt="Parameter Setting" src="https://img.shields.io/badge/parameter-optional-green?style=flat-square" /></p>
+<p>Optional. The number of days to retain deleted shares. When set to 0, soft delete is disabled.</p>
+<ul>
+<li>Default value: <code>0</code></li>
+</ul>
+<h3 id="allowblobpublicaccess">allowBlobPublicAccess<a class="headerlink" href="#allowblobpublicaccess" title="Permanent link">#</a></h3>
+<p><img alt="Parameter Setting" src="https://img.shields.io/badge/parameter-optional-green?style=flat-square" /></p>
+<p>Optional. Determines if any containers can be configured with the anonymous access types of blob or container.</p>
+<ul>
+<li>Default value: <code>False</code></li>
+</ul>
+<h3 id="keyvaultprincipalid">keyVaultPrincipalId<a class="headerlink" href="#keyvaultprincipalid" title="Permanent link">#</a></h3>
+<p><img alt="Parameter Setting" src="https://img.shields.io/badge/parameter-optional-green?style=flat-square" /></p>
+<p>Optional. Set to the objectId of Azure Key Vault to delegated permission for use with Key Managed Storage Accounts.</p>
+<h3 id="tags">tags<a class="headerlink" href="#tags" title="Permanent link">#</a></h3>
+<p><img alt="Parameter Setting" src="https://img.shields.io/badge/parameter-optional-green?style=flat-square" /></p>
+<p>Optional. Tags to apply to the resource.</p>
+<h2 id="outputs">Outputs<a class="headerlink" href="#outputs" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>resourceId</td>
+<td>string</td>
+<td>A unique resource identifier for the storage account.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="snippets">Snippets<a class="headerlink" href="#snippets" title="Permanent link">#</a></h2>
+<h3 id="parameterfile">Parameter file<a class="headerlink" href="#parameterfile" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;$schema&quot;</span><span class="p">:</span> <span class="s2">&quot;https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;contentVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;template&quot;</span><span class="p">:</span> <span class="s2">&quot;templates/storage/v2/template.json&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;storageAccountName&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;name&gt;&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;sku&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard_LRS&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;containers&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;logs&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;publicAccess&quot;</span><span class="p">:</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;lifecycleRules&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;rule_name&gt;&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Lifecycle&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;definition&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;actions&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&quot;baseBlob&quot;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="nt">&quot;delete&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="nt">&quot;daysAfterModificationGreaterThan&quot;</span><span class="p">:</span> <span class="mi">7</span>
+                            <span class="p">}</span>
+                        <span class="p">}</span>
+                    <span class="p">},</span>
+                    <span class="nt">&quot;filters&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&quot;blobTypes&quot;</span><span class="p">:</span> <span class="p">[</span>
+                            <span class="s2">&quot;blockBlob&quot;</span>
+                        <span class="p">],</span>
+                        <span class="nt">&quot;prefixMatch&quot;</span><span class="p">:</span> <span class="p">[</span>
+                            <span class="s2">&quot;logs/&quot;</span>
+                        <span class="p">]</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;blobSoftDeleteDays&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">7</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;containerSoftDeleteDays&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">7</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;shares&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;share_name&gt;&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;shareQuota&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                    <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;shareSoftDeleteDays&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">7</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;allowBlobPublicAccess&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;service&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;service_name&gt;&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;env&quot;</span><span class="p">:</span> <span class="s2">&quot;prod&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="commandline">Command line<a class="headerlink" href="#commandline" title="Permanent link">#</a></h3>
+<h4 id="powershell">PowerShell<a class="headerlink" href="#powershell" title="Permanent link">#</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nb">New-AzResourceGroupDeployment</span> <span class="n">-Name</span> <span class="p">&lt;</span><span class="n">deployment-name</span><span class="p">&gt;</span> <span class="n">-ResourceGroupName</span> <span class="p">&lt;</span><span class="n">resource-group-name</span><span class="p">&gt;</span> <span class="n">-TemplateFile</span> <span class="p">&lt;</span><span class="n">path-to-template</span><span class="p">&gt;</span> <span class="n">-TemplateParameterFile</span> <span class="p">&lt;</span><span class="n">path-to-templateparameter</span><span class="p">&gt;</span>
+</code></pre></div>
+<h4 id="azurecli">Azure CLI<a class="headerlink" href="#azurecli" title="Permanent link">#</a></h4>
+<div class="highlight"><pre><span></span><code>az group deployment create --name &lt;deployment-name&gt; --resource-group &lt;resource-group-name&gt; --template-file &lt;path-to-template&gt; --parameters @&lt;path-to-templateparameterfile&gt;
+</code></pre></div>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: 2021-06-24
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../v1/" class="md-footer__link md-footer__link--prev" aria-label="Previous: v1" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              v1
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/Azure/PSRule.Rules.Azure/" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.indexes", {"navigation.sections": {"level": 1}}, "navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.76f349be.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -10,7 +10,7 @@ import mkdocs.structure.pages
 # Dynamically build template nav
 def build_template_nav(nav: mkdocs.structure.nav.Navigation, config: mkdocs.config.Config, files: mkdocs.structure.files.Files) -> mkdocs.structure.nav.Navigation:
     children = []
-    item: mkdocs.structure.nav.Section = mkdocs.structure.nav.Section("Templates", children)
+    item: mkdocs.structure.nav.Section = mkdocs.structure.nav.Section("zTemplates", children)
 
     for f in files:
         if not f.is_documentation_page():
