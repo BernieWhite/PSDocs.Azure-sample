@@ -1,0 +1,14 @@
+
+name: Check merge dependencies
+
+on:
+  pull_request:
+
+jobs:
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: dependabot/updater-action@main
