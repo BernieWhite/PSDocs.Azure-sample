@@ -1,0 +1,32 @@
+site_name: Contoso Docs for Azure
+site_url: https://berniewhite.github.io/PSDocs.Azure-sample
+site_description: An example site for PSDocs for Azure
+
+repo_url: https://github.com/Azure/PSDocs.Azure/
+edit_uri: ''
+
+theme:
+  name: material
+  font:
+    text: Roboto
+  palette:
+    primary: blue
+  icon:
+    repo: fontawesome/brands/github
+    logo: material/microsoft-azure
+  features:
+  - navigation.instant
+  - navigation.indexes
+  - navigation.sections:
+      level: 1
+  - navigation.tabs
+
+markdown_extensions:
+  - toc:
+      permalink: '#'
+      separator: '-'
+
+plugins:
+- search
+- git-revision-date
+- awesome-pages

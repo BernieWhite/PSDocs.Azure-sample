@@ -1,0 +1,43 @@
+
+name: Publish docs (MkDocs)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Generate docs
+        shell: pwsh
+        run: |-
+          Install-Module PSDocs.Azure -MinimumVersion '0.3.0' -Force;
+          Get-AzDocTemplateFile -Path templates/ | ForEach-Object {
+              Invoke-PSDocument -Path .ps-docs/ -Module PSDocs.Azure -OutputPath docs/azure/templates/ -InputObject $_.TemplateFile -Convention 'AddMkDocsMeta'
+          }
+
+      - name: Setup Python
+        uses: actions/setup-python@v2.2.2
+        with:
+          python-version: '3.9'
+          architecture: 'x64'
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install wheel
+          python3 -m pip install -r requirements-docs.txt
+
+      - name: Build site
+        run: mkdocs build --verbose
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
