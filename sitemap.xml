@@ -2,32 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://berniewhite.github.io/PSDocs.Azure-sample/</loc>
-         <lastmod>2021-06-24</lastmod>
+         <lastmod>2021-10-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://berniewhite.github.io/PSDocs.Azure-sample/azure/overview/</loc>
-         <lastmod>2021-06-24</lastmod>
+         <lastmod>2021-10-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://berniewhite.github.io/PSDocs.Azure-sample/azure/templates/Container-Registry/v1/</loc>
-         <lastmod>2021-06-24</lastmod>
+         <lastmod>2021-10-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://berniewhite.github.io/PSDocs.Azure-sample/azure/templates/Key-Vault/v1/</loc>
-         <lastmod>2021-06-24</lastmod>
+         <lastmod>2021-10-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://berniewhite.github.io/PSDocs.Azure-sample/azure/templates/Storage-Account/v1/</loc>
-         <lastmod>2021-06-24</lastmod>
+         <lastmod>2021-10-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://berniewhite.github.io/PSDocs.Azure-sample/azure/templates/Storage-Account/v2/</loc>
-         <lastmod>2021-06-24</lastmod>
+         <lastmod>2021-10-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
